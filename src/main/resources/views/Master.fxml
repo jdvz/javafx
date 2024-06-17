@@ -1,0 +1,14 @@
+  <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane xmlns:fx="http://javafx.com/fxml">
+  <top>
+    <fx:include source="menu/Main.fxml" fx:id="menuPane"/>
+  </top>
+  <center>
+    <ScrollPane fx:id="workingPane">
+      <!-- content -->
+    </ScrollPane>
+  </center>
+  <bottom>
+  </bottom>
+</BorderPane>

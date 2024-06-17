@@ -1,0 +1,19 @@
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<MenuBar xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="ru.dzera.test.ktpostman.controller.MenuController"
+         fx:id="controllerMenu">
+  <Menu text="File">
+    <items>
+      <MenuItem text="About"/>
+      <MenuItem text="Postman" fx:id="postmanItem" accelerator="Shortcut+P" onAction="#initPostman" />
+      <MenuItem text="Quit" accelerator="Shortcut+Q" onAction="#exit"/>
+    </items>
+  </Menu>
+  <Menu text="Edit">
+    <items>
+      <MenuItem text="Preferences" onAction="#configure" />
+    </items>
+  </Menu>
+</MenuBar>

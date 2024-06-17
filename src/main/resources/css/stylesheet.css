@@ -1,0 +1,33 @@
+
+.error {
+  -fx-background-color: red;
+  -fx-text-fill: white;
+}
+
+.error1 {
+  -fx-background-color: red;
+  -fx-text-fill: white;
+  -fx-border-style: 1px dotted red;
+}
+
+.request-header {
+  -fx-min-height: 20px;
+  -fx-border-style: 1px solid black;
+}
+.request-parameters {
+  -fx-min-height: 100px;
+  -fx-border-style: 1px solid black;
+}
+.response {
+  -fx-border-style: 1px dashed cyan;
+}
+
+#submit {
+  -fx-min-width: 100px;
+}
+
+.table-placeholder {
+  -fx-border-style: 2px solid gray;
+  -fx-background-color: #fafafa;
+  -fx-font-weight: bold;
+}
