@@ -1,0 +1,41 @@
+          History
+
+          Postman started in 2012 as a side project of software engineer Abhinav Asthana, who wanted to simplify API testing while working at Yahoo Bangalore.[4] He named his app Postman – a play on the API request “POST” – and offered it free in the Chrome Web Store. As the app's usage grew, Abhinav recruited former colleagues Ankit Sobti and Abhijit Kane to help create Postman, Inc. The three co-founders lead the company today, with Abhinav serving as CEO and Sobti as CTO.
+
+          In 2023, Postman announced it had acquired Akita, an API observability solution.[5] In 2024, Postman acquired Orbit, a solution for building and managing developer communities.[6]
+          Features
+
+          Postman features include:
+
+          API repository: Allows users to store, catalog, and collaborate around API artifacts in a central platform within public, private, or partner networks
+          API builder: Helps implement an API design workflow through specifications including OpenAPI, GraphQL, and RAML. Integrates varied source controls, CI/CD, gateways, and APM solutions
+          Tools: API client, API design, API documentation, API testing, mock servers, and API detection
+          Intelligence: Security warnings, API repository search, workspaces, reporting, API governance
+          Workspaces: Personal, team, partner, and public workspaces allow for developer collaboration internally and externally
+
+          Postman v11 was released in May 2024. The update includes AI-powered features to help developers with API test generation, documentation, debugging, and data visualization.[7] V11 also enables more users to share API collections with external partners.
+          Business model
+
+          Postman offers tiered pricing, ranging from free options for small teams to paid plans for larger companies and enterprises.
+          Ownership
+
+          Postman is privately held, with funding from Nexus Venture Partners, CRV, Insight Partners, Coatue, Battery Ventures, and Mary Meeker’s BOND.
+
+          In May 2015, the company raised a $1 million seed round. In August 2021, Postman raised a $225 million Series D round at a $5.6 billion valuation.
+
+          Postman has been named a member of Forbes' Cloud 100 for the past three years, placing most recently at #42.[8]
+          References
+
+          Singh, Manish (May 14, 2024). "API platform Postman valued at $5.6 billion in $225 million fundraise". TechCrunch. Retrieved May 14, 2024.
+          "Postman Acquires Orbit To Expand Reach In Software Developer Community". BW Disrupt. Retrieved 2024-05-14.
+          Team, DRJ Editorial (2024-05-14). "Postman Announces Winners of Inaugural Postman API Network Awards". Disaster Recovery Journal. Retrieved 2024-05-14.
+          Asthana, Abhinav (2021-04-05). "How We Built Postman—the Product and the Company". Postman Blog. Retrieved 2024-05-14.
+          Wire, Business (2023-07-19). "Postman Acquires Akita Software". MarTech Series. Retrieved 2024-05-14. {{cite web}}: |first= has generic name (help)
+          "Postman Acquires Orbit | DEVOPSdigest". www.devopsdigest.com. Retrieved 2024-05-14.
+          Lawson, Loraine (2024-05-08). "New Postman Release Supports AI API Development With ... AI". The New Stack. Retrieved 2024-05-14.
+
+          CAI", "KENRICK. "The Cloud 100 2023". Forbes. Retrieved 2024-05-14.
+
+          Categories:
+
+          Software testingAutomation softwareApplication programming interfaces

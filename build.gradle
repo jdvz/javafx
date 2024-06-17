@@ -22,6 +22,8 @@ ext {
     jacksonVersion = '2.17.1'
     log4jVersion = '3.0.0-beta2'
     apacheHttpComponentVersion = '5.3.1'
+    mockkVersion = '1.12.7'
+//    mockkVersion = '1.13.11'
 }
 
 tasks.withType(JavaCompile) {
@@ -59,12 +61,21 @@ dependencies {
     implementation group: 'ch.qos.logback', name: 'logback-core', version: '1.5.6'
     implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.6'
 
+ // mock failed with Modules mockk.jvm and mockk.agent.jvm export package io.mockk to module kotlinx.coroutines.core.jvm
+//    testImplementation "io.mockk:mockk:${mockkVersion}"
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
 
 test {
     useJUnitPlatform()
+    jvmArgs(
+            "--add-opens", "java.base/java.time=ALL-UNNAMED",
+            "--add-opens", "java.base/java.lang.reflect=ALL-UNNAMED",
+            "--add-opens", "mockk.jvm/io.mockk=ALL-UNNAMED",
+            "--add-opens", "mockk.agent.jvm/io.mockk=ALL-UNNAMED"
+    )
 }
 
 jlink {
@@ -78,10 +89,3 @@ jlink {
 jlinkZip {
     group = 'distribution'
 }
-
-/*
-tasks.withType(JavaExec) {
-    if (System.getProperty('debug', 'false') == 'true') {
-        jvmArgs '-Xdebug', '-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005'
-    }
-}*/

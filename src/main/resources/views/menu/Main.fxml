@@ -6,7 +6,7 @@
          fx:id="controllerMenu">
   <Menu text="File">
     <items>
-      <MenuItem text="About"/>
+      <MenuItem text="About" fx:id="aboutItem"/>
       <MenuItem text="Postman" fx:id="postmanItem" accelerator="Shortcut+P" onAction="#initPostman" />
       <MenuItem text="Quit" accelerator="Shortcut+Q" onAction="#exit"/>
     </items>

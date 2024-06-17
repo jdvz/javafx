@@ -4,6 +4,9 @@ import javafx.beans.property.SimpleStringProperty
 import org.apache.hc.core5.http.message.BasicNameValuePair
 import java.io.Serializable
 
+/**
+ * pair with sugar
+ */
 class Couple(name: String = "", content: String = "") : Serializable {
     companion object {
         fun fromArray(data : Collection<String>) : Couple {

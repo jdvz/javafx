@@ -6,6 +6,9 @@ import javafx.fxml.FXML
 import javafx.scene.control.Label
 import org.slf4j.LoggerFactory
 
+/**
+ * for test purpose
+ */
 class TestController {
     companion object {
         val LOG = LoggerFactory.getLogger(TestController::class.java)
@@ -27,7 +30,6 @@ class TestController {
     private fun closeEvent(): () -> Unit {
         return {
             LOG.info("exit")
-//            configuration.close()
             Platform.exit()
             System.exit(0)
         }

@@ -6,6 +6,9 @@ import org.apache.hc.client5.http.cookie.CookieStore
 import java.io.Serializable
 import java.util.*
 
+/**
+ * cookies support
+ */
 class CookieWrapper : Bean, CookieStore, Serializable {
     val cookieStore = BasicCookieStore()
     override fun clear() {

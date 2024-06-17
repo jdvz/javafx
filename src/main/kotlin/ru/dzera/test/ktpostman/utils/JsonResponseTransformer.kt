@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import org.slf4j.LoggerFactory
 import java.io.Serializable
 
+/**
+ * json transformer
+ */
 open class JsonResponseTransformer<T : Serializable>(val clazz: Class<T>) : ResponseTransformer<T> {
     companion object {
         val LOG = LoggerFactory.getLogger(JsonResponseTransformer::class.java)

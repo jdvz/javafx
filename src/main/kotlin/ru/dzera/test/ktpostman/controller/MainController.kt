@@ -2,10 +2,11 @@ package ru.dzera.test.ktpostman.controller
 
 import javafx.fxml.FXML
 import javafx.scene.control.ScrollPane
-import javafx.scene.layout.BorderPane
-import javafx.scene.layout.Pane
 import org.slf4j.LoggerFactory
 
+/**
+ * starter
+ */
 class MainController : IController() {
     companion object {
         val LOG = LoggerFactory.getLogger(MainController::class.java)

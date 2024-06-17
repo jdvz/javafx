@@ -2,6 +2,9 @@ package ru.dzera.test.ktpostman.inject
 
 import org.slf4j.LoggerFactory
 
+/**
+ * small management engine
+ */
 class Autowire {
     companion object {
         val LOG = LoggerFactory.getLogger(Autowire::class.java)
@@ -13,6 +16,7 @@ class Autowire {
         }
     }
 
+    // it might be concurent here, also pay attention on size
     val beans = HashMap<Class<Bean>, Bean>()
 
     private fun <T: Bean> inject(clazz: Class<T>): T {
@@ -32,6 +36,6 @@ class Autowire {
 interface Bean {
 }
 
-inline fun <reified T : Bean> Bean.inject() : T {
+inline fun <reified T : Bean> inject(): T {
     return Autowire.autowire(T::class.java)
 }

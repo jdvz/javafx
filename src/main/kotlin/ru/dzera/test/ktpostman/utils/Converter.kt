@@ -6,6 +6,9 @@ import org.apache.hc.core5.http.io.entity.EntityUtils
 import org.slf4j.LoggerFactory
 import java.io.Serializable
 
+/**
+ * convert response
+ */
 class Converter {
     companion object {
         val LOG = LoggerFactory.getLogger(Converter::class.java)

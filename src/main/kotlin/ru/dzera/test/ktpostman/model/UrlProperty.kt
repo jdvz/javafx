@@ -2,6 +2,9 @@ package ru.dzera.test.ktpostman.model
 
 import javafx.beans.property.SimpleStringProperty
 
+/**
+ * url text model
+ */
 class UrlText {
     private val urlTextProperty = SimpleStringProperty()
     fun setUrlText(url: String) {
@@ -10,7 +13,7 @@ class UrlText {
     fun getUrlText() : String {
         return this.urlTextProperty.get()
     }
-    fun getUrlProperty() : SimpleStringProperty {
+    fun urlTextProperty() : SimpleStringProperty {
         return urlTextProperty;
     }
 }

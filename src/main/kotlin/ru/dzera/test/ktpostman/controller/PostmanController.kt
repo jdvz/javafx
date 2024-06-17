@@ -28,7 +28,9 @@ import ru.dzera.test.ktpostman.utils.Converter
 import java.util.function.Consumer
 import java.util.function.UnaryOperator
 
-
+/**
+ * postman operation ui
+ */
 class PostmanController : IController() {
     companion object {
         val LOG = LoggerFactory.getLogger(PostmanController::class.java)
@@ -75,7 +77,11 @@ class PostmanController : IController() {
     @FXML
     lateinit var removeCookie: Button
     @FXML
-    lateinit var response: Text
+    lateinit var response: ScrollPane
+    @FXML
+    lateinit var body: TextArea
+    @FXML
+    lateinit var helpData: ScrollPane
 
     @FXML
     lateinit var parameterView: TableView<Couple>
@@ -88,7 +94,12 @@ class PostmanController : IController() {
     fun initialize() {
         LOG.debug("init Postman controller")
         urlProperty.setUrlText(postmanService.getInitialUrlValue())
-        url.textProperty().bindBidirectional(urlProperty.getUrlProperty())
+        url.textProperty().bindBidirectional(urlProperty.urlTextProperty())
+        url.prefWidthProperty().bind(ComponentHelper.getInstance().primaryStage.widthProperty()
+            .subtract(methods.widthProperty())
+            .subtract(submit.widthProperty())
+            .subtract(28.0) // insets
+        )
         url.focusedProperty()
             .addListener { _: ObservableValue<out Boolean>, _: Boolean, newValue: Boolean ->
                 if (!newValue) { // focus lost
@@ -125,50 +136,64 @@ class PostmanController : IController() {
             LOG.info("click on buttom submit: {}", urlProperty)
             this.send()
         }
-        response.textProperty().bind(exchangeProperty.responseBody)
 
+        val responseContent = Text()
+        responseContent.textProperty().bind(exchangeProperty.getResponseBodyProperty())
+        response.content = responseContent
+        response.pannableProperty().set(true)
+        response.fitToWidthProperty().set(true)
+        response.prefWidthProperty().bind(parameterView.widthProperty())
+
+        requestParameters.prefWidth = 300.0
         requestParameters.tabClosingPolicy = TabPane.TabClosingPolicy.UNAVAILABLE
-        initializeParameterTab(requestParameters, parameterView, addParameter, removeParameter, exchangeProperty.parameters)
+        initializeParameterTab(parameterView, addParameter, removeParameter, exchangeProperty.parameters)
         { column ->
             column.prefWidthProperty().bind(configurationService.parameterColumnWidthProperty)
             column.widthProperty().addListener(configurationService.bindParameterColumnWidth)
         }
-        initializeParameterTab(requestParameters, headerView, addHeader, removeHeader, exchangeProperty.headers)
+        initializeParameterTab(headerView, addHeader, removeHeader, exchangeProperty.headers)
         { column ->
             column.prefWidthProperty().bind(configurationService.headerColumnWidthProperty)
             column.widthProperty().addListener(configurationService.bindHeaderColumnWidth)
         }
-        initializeParameterTab(requestParameters, cookieView, addCookie, removeCookie, exchangeProperty.cookies)
+        initializeParameterTab(cookieView, addCookie, removeCookie, exchangeProperty.cookies)
         { column ->
             column.prefWidthProperty().bind(configurationService.cookieColumnWidthProperty)
             column.widthProperty().addListener(configurationService.bindCookieColumnWidth)
         }
+        body.textProperty().bindBidirectional(exchangeProperty.bodyProperty())
+        body.isEditable = true
+
+        val helpText = Text(configurationService.help())
+        helpData.content = helpText
+        helpData.prefWidthProperty().bind(parameterView.widthProperty())
     }
 
+    /**
+     * initialize tabs
+     */
     private fun initializeParameterTab(
-        tabPane: TabPane, tableView: TableView<Couple>, addButton: Button, removeButton: Button,
-                                       params: MutableList<Couple>,
-                                       bindColumnWidth: Consumer<TableColumn<Couple, String>>) {
-
-//        params.addAll(configurationService.)
-
+        tableView: TableView<Couple>, addButton: Button, removeButton: Button, params: MutableList<Couple>,
+        bindColumnWidth: Consumer<TableColumn<Couple, String>>
+    ) {
+        tableView.prefWidthProperty().bind(
+            ComponentHelper.getInstance().primaryStage.widthProperty()
+            .subtract(56.0))
+        tableView.maxWidthProperty().bind(
+            ComponentHelper.getInstance().primaryStage.widthProperty()
+            .subtract(28.0)) // insets
         tableView.items.addAll(params)
         tableView.isEditable = true
         tableView.columnResizePolicy = TableView.CONSTRAINED_RESIZE_POLICY
         val selectionModel = tableView.selectionModel
         selectionModel.selectionMode = SelectionMode.MULTIPLE
 
-        tableView.prefWidthProperty().bind(tabPane.widthProperty())
-        tableView.prefHeightProperty().bind(tabPane.heightProperty())
-
         addButton.onAction = EventHandler {
             LOG.info("adding new")
-    //            exchangeProperty.parameters.add(Couple())
             tableView.items.add(Couple())
         }
         removeButton.onAction = EventHandler {
             LOG.info("removing selected")
-    //            exchangeProperty.parameters.removeAll(selectionModel.selectedItems)
             tableView.items.removeAll(selectionModel.selectedItems)
         }
 
@@ -180,7 +205,7 @@ class PostmanController : IController() {
         tableNameColumn.cellFactory = TextFieldTableCell.forTableColumn()
         tableNameColumn.minWidth = 100.0
         // why 5000
-//        bindColumnWidht.accept(tableContentColumn)
+        bindColumnWidth.accept(tableContentColumn)
 
         tableContentColumn.editableProperty().value = true
         tableContentColumn.cellValueFactory = PropertyValueFactory("content")

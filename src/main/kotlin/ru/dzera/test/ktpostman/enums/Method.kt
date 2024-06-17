@@ -11,6 +11,9 @@ import ru.dzera.test.ktpostman.inject.CookieWrapper
 import ru.dzera.test.ktpostman.inject.Autowire
 import ru.dzera.test.ktpostman.model.Couple
 
+/**
+ * exchange data implementation
+ */
 enum class Method: IMethod {
     GET {
         override fun send(

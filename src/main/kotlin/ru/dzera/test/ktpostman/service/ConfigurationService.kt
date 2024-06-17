@@ -125,6 +125,10 @@ class ConfigurationService : IService {
         }
     }
 
+    fun help(): String {
+        return ConfigurationService::class.java.getResource("/postman.history")!!.readText()
+    }
+
     val bindParameterColumnWidth : ChangeListener<Number> = ChangeListener() {
             _: ObservableValue<out Number>,
                                      _: Number, newValue: Number ->

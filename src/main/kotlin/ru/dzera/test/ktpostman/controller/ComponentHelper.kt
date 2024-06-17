@@ -1,9 +1,11 @@
 package ru.dzera.test.ktpostman.controller
 
 import javafx.scene.control.ScrollPane
-import javafx.scene.layout.Pane
 import javafx.stage.Stage
 
+/**
+ * variables holder
+ */
 class ComponentHelper private constructor() {
     companion object {
         @Volatile var INSTANCE : ComponentHelper? = null

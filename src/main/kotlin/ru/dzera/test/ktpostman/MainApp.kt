@@ -1,4 +1,5 @@
 package ru.dzera.test.ktpostman
+
 import javafx.application.Application
 import javafx.application.Platform
 import javafx.event.EventHandler
@@ -6,11 +7,11 @@ import javafx.fxml.FXMLLoader
 import javafx.scene.Parent
 import javafx.scene.Scene
 import javafx.stage.Stage
+
 import ru.dzera.test.ktpostman.controller.ComponentHelper
 import ru.dzera.test.ktpostman.controller.MainController
 import ru.dzera.test.ktpostman.inject.Autowire
 import ru.dzera.test.ktpostman.service.ConfigurationService
-
 
 class MainApp : Application() {
     companion object {
